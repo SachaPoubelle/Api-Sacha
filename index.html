@@ -15,19 +15,22 @@
         background-position: center;
     }
     </style>
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@twilio/sdk@3.66.0/dist/twilio.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const accountSid = 'AC5d90eec11735690e7b5be53700d2d4be';
             const authToken = 'f90327bb19db5af0c79710b46801a88b';
-            const client = require('twilio')(accountSid, authToken);
+            Twilio.setAccessToken(authToken);
 
-            client.messages
+            Twilio.messages
                 .create({
-                    body: "Quelqu\'un vient de se connecter à l'API.  IP : XX.XXX.XXXXX.XX         Heure : XX:XX",
+                    body: "Quelqu'un vient de se connecter à l'API.  IP : XX.XXX.XXXXX.XX         Heure : XX:XX",
                     from: 'whatsapp:+14155238886',
                     to: 'whatsapp:+33603026209'
                 })
                 .then(message => console.log(message.sid));
         });
     </script>
+</html>
 </html>
